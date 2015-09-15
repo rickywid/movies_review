@@ -1,0 +1,9 @@
+= image_tag @movie.image.url(:medium)
+%p Submitted by 
+= @movie.user.email
+= @movie.title
+= @movie.description
+
+- if @movie.user == current_user
+	= link_to "Edit", edit_movie_path(@movie)
+	= link_to "Delete", movie_path(@movie), method: :delete
