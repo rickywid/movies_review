@@ -1,9 +1,33 @@
-= image_tag @movie.image.url(:medium)
-%p Submitted by 
-= @movie.user.email
-= @movie.title
-= @movie.description
+.col-md-3
+	.panel.panel-default.centered
+		.panel-heading
+			%h2= @movie.title
+		.panel-body
+			= image_tag @movie.image.url(:medium)
+	.panel.panel-default
+		.panel-body
+			%p Submitted by: #{@movie.user.email} 
+			- if @movie.user == current_user
+				= link_to "Edit", edit_movie_path(@movie)
+				= link_to "Delete", movie_path(@movie), method: :delete
+.col-md-9
+	.panel.panel-default
+		.panel-heading
+			%h4 User Reviews
+		.panel-body
+			- if @movie.comments.blank?
+				%h3 No Reviews
+				%p
+					= link_to "Sign up", new_user_registration_path
+					to leave a comment
+			- @movie.comments.each do |comment|
+				= comment.user.email
+				= comment.body
+			
+			- if user_signed_in?
+				= simple_form_for [@movie, @movie.comments.build] do |f|
+					= f.input :body, input_html: {class: "form-control"}
+					%br
+					= f.submit "Add Comment", class: "btn btn-success btn-sm"
 
-- if @movie.user == current_user
-	= link_to "Edit", edit_movie_path(@movie)
-	= link_to "Delete", movie_path(@movie), method: :delete
+			

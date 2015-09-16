@@ -31,6 +31,7 @@ class MoviesController < ApplicationController
 
 	def show
 		@movie = Movie.find(params[:id])
+		@comment = Comment.new
 	end
 
 	def destroy
@@ -44,4 +45,6 @@ class MoviesController < ApplicationController
 		def movie_params
 			params.require(:movie).permit(:title, :description, :image)
 		end
+
+
 end
