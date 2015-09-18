@@ -1,33 +1,57 @@
 .col-md-3
-	.panel.panel-default.centered
-		.panel-heading
-			%h2= @movie.title
+	.panel.panel-default.centered.poster
 		.panel-body
 			= image_tag @movie.image.url(:medium)
-	.panel.panel-default
+		.panel-footer
+			%h6 
+				Avg Rating
+				(
+				= @movie.comments.count
+				Reviews )
+			%div{ :class => "rating", "data-score" => "#{@avg}" }
+	.panel.panel-default.poster
 		.panel-body
 			%p Submitted by: #{@movie.user.email} 
+			%p Director:
+			%p Length:
+			%p Summary: 
 			- if @movie.user == current_user
 				= link_to "Edit", edit_movie_path(@movie)
 				= link_to "Delete", movie_path(@movie), method: :delete
 .col-md-9
 	.panel.panel-default
 		.panel-heading
-			%h4 User Reviews
+			%h4
+				User Reviews
 		.panel-body
 			- if @movie.comments.blank?
 				%h3 No Reviews
-				%p
-					= link_to "Sign up", new_user_registration_path
-					to leave a comment
+				
 			- @movie.comments.each do |comment|
-				= comment.user.email
-				= comment.body
-			
-			- if user_signed_in?
+				%h5= comment.user.email
+				%div{ :class => "rating", "data-score" => "#{comment.rating}"}
+				%p= comment.body
+				%br
+	- if user_signed_in?		
+		.panel.panel-default
+			.panel-heading
+				%h4.title Add Review
+			.panel-body
 				= simple_form_for [@movie, @movie.comments.build] do |f|
+					= f.input :rating, label: "Rating (1-5)", input_html: {class: "form-control", min: 0, max: 5}
 					= f.input :body, input_html: {class: "form-control"}
 					%br
 					= f.submit "Add Comment", class: "btn btn-success btn-sm"
+	- else
+		%p
+			= link_to "Sign up", new_user_registration_path
+			to leave a comment
+:javascript
+	$('.rating').raty({
+	  path: '/assets/',
+	  readOnly: true,
+	  score: function() {
+	    return $(this).attr('data-score');
+	  }
+	});
 
-			

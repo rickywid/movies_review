@@ -31,7 +31,15 @@ class MoviesController < ApplicationController
 
 	def show
 		@movie = Movie.find(params[:id])
+		@comment = Comment.find(params[:id])
 		@comment = Comment.new
+		@movies = Movie.all
+		@comments = Comment.where(movie_id: @movie.id)
+		if @comments.blank?
+			@avg = 0
+		else
+			@avg = @comments.average(:rating).round(2)
+		end
 	end
 
 	def destroy
