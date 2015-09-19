@@ -1,23 +1,20 @@
-.col-md-3
-	.panel.panel-default.centered.poster
-		.panel-body
-			= image_tag @movie.image.url(:medium)
-		.panel-footer
-			%h6 
-				Avg Rating
-				(
-				= @movie.comments.count
-				Reviews )
-			%div{ :class => "rating", "data-score" => "#{@avg}" }
-	.panel.panel-default.poster
-		.panel-body
-			%p Submitted by: #{@movie.user.email} 
-			%p Director:
-			%p Length:
-			%p Summary: 
-			- if @movie.user == current_user
-				= link_to "Edit", edit_movie_path(@movie)
-				= link_to "Delete", movie_path(@movie), method: :delete
+.col-md-3.overflow
+	= image_tag @movie.image.url(:large)
+	%h6 
+		Avg Rating
+		(
+		= pluralize(@movie.comments.count, "Review")
+		)
+		%div{ :class => "rating", "data-score" => "#{@avg}" }
+	%br
+
+	%h5 Submitted by: #{@movie.user.email} 
+	%h5 Director:
+	%h5 Length:
+	%h5 Summary: 
+	- if @movie.user == current_user
+		= link_to "Edit", edit_movie_path(@movie)
+		= link_to "Delete", movie_path(@movie), method: :delete
 .col-md-9
 	.panel.panel-default
 		.panel-heading
@@ -25,10 +22,10 @@
 				User Reviews
 		.panel-body
 			- if @movie.comments.blank?
-				%h3 No Reviews
+				%h3.reviews No Reviews
 				
 			- @movie.comments.each do |comment|
-				%h5= comment.user.email
+				%p= comment.user.email
 				%div{ :class => "rating", "data-score" => "#{comment.rating}"}
 				%p= comment.body
 				%br

@@ -1,7 +1,7 @@
 !!! 5
 %html
 %head
-	%title Rotten Banana's
+	%title ROTTEN BANANA'S
 	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
@@ -10,7 +10,7 @@
 		.container-fluid
 			.navbar-header
 				.navbar-brand
-					= link_to "Rotten Bananas", root_url
+					= link_to "ROTTEN BANANA'S", root_url
 			%ul.nav.navbar-nav.navbar-right
 				- if user_signed_in?
 					%li= link_to "Add Movie", new_movie_path
@@ -31,8 +31,8 @@
 				- else
 					.jumbotron
 						%h1 Watch.Discuss.Review
-						%h5 Watch your favorite movies and then share your thoughts with everyone!
-						%h5 Sign up now to add your favorite movies and write reviews.
+						%h5.reviews 
+							Sign up now and write about how you paid $15 (or whatever the cost of movie ticket is in your area) and wasted 2 hours of your life to watch that horrible movie nobody warned you about!
 						%br
 						= link_to "Get Started", new_user_registration_path, class: "btn btn-success btn-sm"
 		
