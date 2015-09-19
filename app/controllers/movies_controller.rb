@@ -31,7 +31,6 @@ class MoviesController < ApplicationController
 
 	def show
 		@movie = Movie.find(params[:id])
-		@comment = Comment.find(params[:id])
 		@comment = Comment.new
 		@movies = Movie.all
 		@comments = Comment.where(movie_id: @movie.id)

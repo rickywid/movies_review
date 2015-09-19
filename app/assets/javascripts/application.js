@@ -16,9 +16,3 @@
 //= require turbolinks
 //= require_tree .
 
-$('.rating').raty({
-  path: '/assets/images',
-  score: function() {
-    return $(this).attr('data-score');
-  }
-});

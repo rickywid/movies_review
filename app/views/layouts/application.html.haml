@@ -6,8 +6,7 @@
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
 %body
-
-	%nav.navbar.navbar-default
+	%nav.navbar.navbar-inverse
 		.container-fluid
 			.navbar-header
 				.navbar-brand
@@ -19,13 +18,26 @@
 				- else
 					%li= link_to "Sign In", new_user_session_path
 					%li= link_to "Sign Up", new_user_registration_path
+							
 	
 	.container
-
-		- flash.each do |k,v|
-			.alert{:class => "alert-#{k}"}= v 
-		- flash.each do |k,v|
-			.notice 
-
+		.row
+			.col-md-12
+				- if user_signed_in?
+					- flash.each do |k,v|
+						.alert{:class => "alert-#{k}"}= v 
+					- flash.each do |k,v|
+						.notice 
+				- else
+					.jumbotron
+						%h1 Watch.Discuss.Review
+						%h5 Watch your favorite movies and then share your thoughts with everyone!
+						%h5 Sign up now to add your favorite movies and write reviews.
+						%br
+						= link_to "Get Started", new_user_registration_path, class: "btn btn-success btn-sm"
+		
 		= yield
 
+	%nav.navbar.navbar-inverse.navbar-fixed-bottom
+		.container
+			%p 2015
