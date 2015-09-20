@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   
   resources :users
   resources :movies do
+  	collection do
+  		get 'search'
+  	end
     resources :comments
   end
   

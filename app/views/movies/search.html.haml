@@ -1,0 +1,8 @@
+.row
+	.col-md-12
+		%h3 Results
+.row		
+	.col-md-12.centered
+		- @movie.each do |movie|
+			= link_to movie_path(movie) do
+				= image_tag movie.image.url(:medium), class:"movie-poster"
