@@ -1,7 +1,7 @@
 !!! 5
 %html
 %head
-	%title ROTTEN BANANA'S
+	%title Rotten Potatoes
 	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
@@ -10,7 +10,7 @@
 		.container-fluid
 			.navbar-header
 				.navbar-brand
-					= link_to "ROTTEN BANANA'S", root_url
+					= link_to "Rotten Potatoes", root_url
 
 			%ul.nav.navbar-nav.navbar-right
 				= form_tag search_movies_path, method: :get, class: "navbar-form navbar-left", role: "search" do
@@ -46,5 +46,5 @@
 		= yield
 
 	%nav.navbar.navbar-inverse.navbar-fixed-bottom
-		.container
-			%p 2015
+		.container.footer
+			%p Rotten Potatoes - 2015
