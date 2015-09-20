@@ -1,0 +1,14 @@
+%h1= @user.email
+%h5
+	Member Since:
+	= @user.created_at
+
+.row
+	.col-md-12
+		%h2 Movies Reviewed
+.row 
+	.col-md-12
+		- @user_movies.each do |user|
+			= link_to movie_path(user) do
+				= image_tag user.image.url(:medium), class: "movie-poster"
+					

@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+before_action :find_users
 
 	def index
 		@movie = Movie.all
@@ -53,5 +54,7 @@ class MoviesController < ApplicationController
 			params.require(:movie).permit(:title, :description, :director, :length, :image)
 		end
 
-
+		def find_users
+			@user = current_user
+		end
 end

@@ -13,7 +13,7 @@
 					= link_to "ROTTEN BANANA'S", root_url
 			%ul.nav.navbar-nav.navbar-right
 				- if user_signed_in?
-					%li= link_to "Profile", new_movie_path
+					%li= link_to "Profile", user_path(@user)
 					%li= link_to "Add Movie", new_movie_path
 					%li= link_to "Sign Out", destroy_user_session_path, method: :delete
 				- else
