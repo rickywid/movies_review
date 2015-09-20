@@ -22,7 +22,7 @@
 				User Reviews
 		.panel-body
 			- if @movie.comments.blank?
-				%h3.reviews No Reviews
+				%h3.reviews No Reviews Yet. Be the First One
 				
 			- @movie.comments.each do |comment|
 				%p= comment.user.email
@@ -41,8 +41,10 @@
 					= f.submit "Add Comment", class: "btn btn-success btn-sm"
 	- else
 		%p
-			= link_to "Sign up", new_user_registration_path
+			= link_to "Sign up", new_user_registration_path, class: "btn btn-success"
 			to leave a comment
+
+
 :javascript
 	$('.rating').raty({
 	  path: '/assets/',

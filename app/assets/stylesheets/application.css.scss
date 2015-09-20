@@ -24,6 +24,7 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
 	color: white;
+	font-weight: bolder;
 }
 
 .reviews,
@@ -62,16 +63,15 @@ img.movie-poster {
 }
 
 img.movie-poster:hover {
-	-ms-transform: scale(1.5);
-	-webkit-transform: scale(1.5);
-	transform: scale(1.2);
+	-webkit-filter: grayscale(85%);
 }
 
 .panel-default {
 	border: none;
 }
 .panel-default > .panel-heading {
-	background-color: #B3A67C;
+	background-color: #222;
+	font-weight: bolder;
 }
 
 input[type="text"] {
@@ -90,4 +90,9 @@ input[type="file"] {
 
 a:hover {
 	text-decoration: none;
+}
+
+.error {
+	font-weight: bold;
+	color: red;
 }
