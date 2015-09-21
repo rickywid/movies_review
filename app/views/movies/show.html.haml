@@ -9,9 +9,9 @@
 	%br
 
 	%h5 Submitted by: #{@movie.user.email} 
-	%h5 Director:
-	%h5 Length:
-	%h5 Summary: 
+	%h5 Director: #{@movie.director}
+	%h5 Length: #{@movie.length}
+	%h5 Summary: #{@movie.description}
 	- if @movie.user == current_user
 		= link_to "Edit", edit_movie_path(@movie)
 		= link_to "Delete", movie_path(@movie), method: :delete
