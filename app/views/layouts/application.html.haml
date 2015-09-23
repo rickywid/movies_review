@@ -13,11 +13,7 @@
 					= link_to "Rotten Potatoes", root_url
 
 			%ul.nav.navbar-nav.navbar-right
-				= form_tag search_movies_path, method: :get, class: "navbar-form navbar-left", role: "search" do
-					%p
-						= text_field_tag :search, params[:search], class: "form-control"
-						= submit_tag "Search", name: nil, class: "btn btn-default"
-
+			
 				- if user_signed_in?
 					%li= link_to "Profile", user_path(@user)
 					%li= link_to "Add Movie", new_movie_path

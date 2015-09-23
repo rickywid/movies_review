@@ -8,5 +8,4 @@ class Movie < ActiveRecord::Base
 
 	validates :title, :description, :length, :director, presence: true
 
-	searchkick
 end
