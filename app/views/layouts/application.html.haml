@@ -16,7 +16,7 @@
 			%ul.nav.navbar-nav.navbar-right
 				= form_tag search_movies_path, method: :get, class: "navbar-form navbar-left", role: "search" do
 					%p
-						= text_field_tag {:placeholder => "First name", :search, params[:search], class: "form-control"}
+						= text_field_tag class: "form-control", placeholder: 'Enter search term...'
 						= submit_tag "Search", name: nil, class: "btn btn-default"
 
 				- if user_signed_in?
