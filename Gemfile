@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'pg', '~> 0.18.3'
-gem 'searchkick', '~> 0.9.1'
-gem 'elasticsearch-rails', '~> 0.1.7'
-gem 'elasticsearch-model', '~> 0.1.7'
-gem 'elasticsearch', '~> 1.0.13'
 gem 'paperclip', '~> 4.3.1'
 gem 'simple_form', '~> 3.1.1'
 gem 'bootstrap-sass', '~> 3.3.5.1'

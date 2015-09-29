@@ -46,8 +46,11 @@ before_action :authenticate_user!, except: [:index, :show]
 
 	def destroy
 		@movie = Movie.find(params[:id])
-		@movie.destroy
-		flash[:success] = "Movie Deleted"
+		if @movie.destroy
+			flash[:success] = "Movie Deleted"
+		else
+			flash[:error] = "Error"
+		end
 		redirect_to root_url
 	end
 
